@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2015-03-21 05:28:19
+<?php /* Smarty version Smarty-3.1.8, created on 2015-03-22 03:55:15
          compiled from "./home/views/default\index\show.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:81550c6e4ed57c60-96778106%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ddb1737e6c8309847c9131438c195942c163504f' => 
     array (
       0 => './home/views/default\\index\\show.tpl',
-      1 => 1426886891,
+      1 => 1426967711,
       2 => 'file',
     ),
   ),
@@ -21,6 +21,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   array (
     'res' => 0,
     'detail' => 0,
+    'login' => 0,
+    'user' => 0,
     'advertise' => 0,
   ),
   'has_nocache_code' => false,
@@ -128,7 +130,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <h2>
                         评论
                     </h2>
-
+                    
+                    <!--
                     <table class="ostable" style="width:650">
                         <tbody>
                             <tr>
@@ -151,6 +154,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             </tr>
                         </tbody>
                      </table>
+                     -->
 
                     <br>
                     <div class="comment_portrait" style="float:left">
@@ -265,6 +269,28 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     </div>
                 </div>
             </div>
+        </div>
+
+      <div id="register_login" style="position:absolute; top:20px; right:10px; font-size:22px">
+            <?php if ($_smarty_tpl->tpl_vars['login']->value=="false"){?>
+                <a style="color:#555555;text-decoration: none;" href="/news/index.php/login/login/id/<?php echo $_smarty_tpl->tpl_vars['detail']->value['id'];?>
+" target="_self">
+                    登录
+                </a>
+                &nbsp;
+                <a style="color:#555555;text-decoration: none;" href="/news/index.php/login/register/id/<?php echo $_smarty_tpl->tpl_vars['detail']->value['id'];?>
+" target="_self">
+                    注册
+                </a>
+            <?php }else{ ?>
+                <span style="color:#fff000"><?php echo $_smarty_tpl->tpl_vars['user']->value['username'];?>
+,您好!</span>
+                <br>
+                <a style="color:#555555;text-decoration:none" href="/news/index.php/login/leave/id/<?php echo $_smarty_tpl->tpl_vars['detail']->value['id'];?>
+" target="_self">
+                    &nbsp;&nbsp;退出
+                </a>
+            <?php }?>
         </div>
 
          <div id="advertisement" style="position:fixed; width=200px; height:450px; left:0px; top:100px; background-color:#dbed86">

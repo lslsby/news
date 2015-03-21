@@ -92,7 +92,8 @@
                     <h2>
                         评论
                     </h2>
-
+                    
+                    <!--
                     <table class="ostable" style="width:650">
                         <tbody>
                             <tr>
@@ -115,6 +116,7 @@
                             </tr>
                         </tbody>
                      </table>
+                     -->
 
                     <br>
                     <div class="comment_portrait" style="float:left">
@@ -229,6 +231,24 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+      <div id="register_login" style="position:absolute; top:20px; right:10px; font-size:22px">
+            <{if $login eq "false"}>
+                <a style="color:#555555;text-decoration: none;" href="/news/index.php/login/login/id/<{$detail.id}>" target="_self">
+                    登录
+                </a>
+                &nbsp;
+                <a style="color:#555555;text-decoration: none;" href="/news/index.php/login/register/id/<{$detail.id}>" target="_self">
+                    注册
+                </a>
+            <{else if}>
+                <span style="color:#fff000"><{$user.username}>,您好!</span>
+                <br>
+                <a style="color:#555555;text-decoration:none" href="/news/index.php/login/leave/id/<{$detail.id}>" target="_self">
+                    &nbsp;&nbsp;退出
+                </a>
+            <{/if}>
         </div>
 
          <div id="advertisement" style="position:fixed; width=200px; height:450px; left:0px; top:100px; background-color:#dbed86">

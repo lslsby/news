@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2015-03-21 14:41:23
+<?php /* Smarty version Smarty-3.1.8, created on 2015-03-22 02:59:05
          compiled from "./home/views/default\index\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:733455094700b36aa3-17140481%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '42e4512b3c268283b74d9e50c7ba504bdb6bd668' => 
     array (
       0 => './home/views/default\\index\\index.tpl',
-      1 => 1426882192,
+      1 => 1426964338,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'value' => 0,
     'news' => 0,
     'count' => 0,
+    'login' => 0,
+    'user' => 0,
     'advertise' => 0,
   ),
   'has_nocache_code' => false,
@@ -221,6 +223,27 @@ $_smarty_tpl->tpl_vars["value"]->_loop = true;
                 <img style="width:100%; height:150px" src="/news/database/img/background/background.jpg">
             </div>
             -->
+            
+            <div id="register_login" style="position:absolute; top:20px; right:20px; font-size:22px">
+                <?php if ($_smarty_tpl->tpl_vars['login']->value=="false"){?>
+                    <a href="/news/index.php/login/login/page/main" target="_self">
+                        登录
+                    </a>
+                    &nbsp;
+                    <a href="/news/index.php/login/register/page/main" target="_self">
+                        注册
+                    </a>
+                <?php }else{ ?>
+                    <span style="color:#fff000"><?php echo $_smarty_tpl->tpl_vars['user']->value['username'];?>
+,您好!</span>
+                    <br>
+                    <br>
+                    <a href="/news/index.php/login/leave/page/main" target="_self">
+                        &nbsp;&nbsp;退出
+                    </a>
+                <?php }?>
+            </div>
+
         </div>
 
         <div id="advertisement" style="position:fixed; width=200px; height:450px; left:0px; top:100px; background-color:#dbed86">

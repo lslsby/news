@@ -33,10 +33,10 @@
 
             //处理是否登录信息
             if (isset($_SESSION[session_id()]["login"])) {
-                $this->assign("login", true);
+                $this->assign("login", "true");
                 $this->assign("user", $_SESSION[session_id()]["user"]);
             } else {
-                $this->assign("login", false);
+                $this->assign("login", "false");
             }
 
             $this->display();
@@ -93,8 +93,16 @@
 
             $this->addAdvertise();
 
+            //处理是否登录信息
+            if (isset($_SESSION[session_id()]["login"])) {
+                $this->assign("login", "true");
+                $this->assign("user", $_SESSION[session_id()]["user"]);
+            } else {
+                $this->assign("login", "false");
+            }
+
             //分配一个编辑器
-            $this->assign("ck", Form::editor("content"));
+            // $this->assign("ck", Form::editor("content"));
             $this->display();
         }
 

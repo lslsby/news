@@ -164,6 +164,26 @@
                 <img style="width:100%; height:150px" src="/news/database/img/background/background.jpg">
             </div>
             -->
+            
+            <div id="register_login" style="position:absolute; top:20px; right:20px; font-size:22px">
+                <{if $login eq "false"}>
+                    <a href="/news/index.php/login/login/page/main" target="_self">
+                        登录
+                    </a>
+                    &nbsp;
+                    <a href="/news/index.php/login/register/page/main" target="_self">
+                        注册
+                    </a>
+                <{else if}>
+                    <span style="color:#fff000"><{$user.username}>,您好!</span>
+                    <br>
+                    <br>
+                    <a href="/news/index.php/login/leave/page/main" target="_self">
+                        &nbsp;&nbsp;退出
+                    </a>
+                <{/if}>
+            </div>
+
         </div>
 
         <div id="advertisement" style="position:fixed; width=200px; height:450px; left:0px; top:100px; background-color:#dbed86">

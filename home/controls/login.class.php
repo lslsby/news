@@ -1,18 +1,57 @@
 <?php
+
 class Login {
     function login() {
+        if ($_GET["page"] == "main") {
+            $_SESSION["page"] = "main";
+        }else {
+            $_SESSION["id"] = $_GET["id"];
+        }
         $this->display();
     }
 
     function loginButton() {
-
+        $GLOBALS["debug"] = 0;
+        $_SESSION[session_id()]["login"] = "true";
+        $user = D("user");
+        $record = $user->where(array("email" => $_POST["email"]))->select();
+        $_SESSION[session_id()]["user"] = $record[0];
+        //如果是从主页面登录过来的，则直接跳到主页面
+        if ($_SESSION["page"] == "main") {
+            unset($_SESSION["page"]);
+            $this->success("登录成功！", 3, "index/index");
+        } else {
+            $id = $_SESSION["id"];
+            unset($_SESSION["id"]);
+            $this->redirect("index/show/id/" . $id);
+        }
     }
 
     function validateLogin() {
-
+        $user = D("user");
+        if (isset($_POST["password"])) {
+            $record = $user->where(array("email" => $_POST["email"], "password" => $_POST["password"]))->select();
+            if (count($record) == 1) {
+                echo "yes";
+            } else {
+                echo "no";
+            }
+        } else {
+            $record = $user->where(array("email" => $_POST["email"]))->select();
+            if (count($record) == 1) {
+                echo "yes";
+            } else {
+                echo "no";
+            }
+        }
     }
 
     function register() {
+         if ($_GET["page"] == "main") {
+            $_SESSION["page"] = "main";
+        }else {
+            $_SESSION["id"] = $_GET["id"];
+        }
         $this->display();
     }
 
@@ -24,7 +63,13 @@ class Login {
         $array["password"] = $_POST["password"];
         $user = D("user");
         $user->insert($array);
-        $this->success("注册用户成功！", 5, "index/index");
+        //如果是从主页面登录过来的，则直接跳到主页面
+        if ($_SESSION["page"] == "main") {
+            $this->success("注册成功！", 3, "index/index");
+        } else {
+            $id = $_SESSION["id"];
+            $this->redirect("index/show/id/" . $id);
+        }
     }
 
     function validateRegister() {
@@ -35,7 +80,7 @@ class Login {
             } else {
                 echo "no";
             }
-            echo $_SESSION[session_id()]["vcode"];
+            // echo $_SESSION[session_id()]["vcode"];
             // echo session_id();
         } else {
             if (trim($_POST["value"]) == '') {
@@ -57,6 +102,20 @@ class Login {
             } else {
                 echo "yes";
             }
+        }
+    }
+
+    function leave() {
+        unset($_SESSION[session_id()]["login"]);
+        unset($_SESSION[session_id()]["user"]);
+        session_destroy();
+        //如果是从主页面登录过来的，则直接跳到主页面
+        if (isset($_GET["id"])) {
+            $id = $_GET["id"];
+            $this->redirect("index/show/id/" . $id);
+        } else {
+            unset($_SESSION["page"]);
+            $this->success("退出成功！", 3, "index/index");
         }
     }
 }

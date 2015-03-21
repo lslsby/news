@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="<{$res}>/css/register_login.css">
         <script type="text/javascript" src="<{$public}>/js/ajax3.0.js"></script>
         <script type="text/javascript" src="<{$res}>/js/md5.js"></script>
+        <script type="text/javascript" src="<{$res}>/js/login.js"></script>
 
    <style>
         
@@ -40,7 +41,7 @@
                             <tr style="text-align:center">
                                 <th>账户:</th>
                                 <td width="300">
-                                    <input id="email" type="text" style="width:250px" name="email" placeholder="电子邮箱/手机号" autocomplete="off" value="">
+                                    <input id="email" onblur='validate("email")' type="text" style="width:250px" name="email" placeholder="电子邮箱" autocomplete="off" value="">
                                 </td>
                                 <td>
                                     <span id="email_true" style="color:#4fca64;display:none">该账号可以使用</span>
@@ -53,7 +54,11 @@
                             <tr style="text-align:center">
                                 <th>密码:</th>
                                 <td width="300">
-                                    <input id="password" type="password" style="width:250px" name="password" placeholder="请输入密码" autocomplete="off">
+                                    <input id="password" onblur='validate("password")'type="password" style="width:250px" name="password" placeholder="请输入密码" autocomplete="off">
+                                </td>
+                                <td>
+                                    <span id="password_true" style="color:#4fca64;display:none">密码正确</span>
+                                    <span id="password_false" style="color:#ff0000;display:none">密码错误!</span>
                                 </td>
                                 <td>
                                 </td>
@@ -64,9 +69,13 @@
                                     </th>
                                     <td width="245">
                                         <div class="valid">
-                                            <input type="text" name="vcode">
-                                            <img class="vcode" src="/news/index.php/vcode/vcode" width="85" height="35" alt="">
+                                            <input id="vcode" type="text" onblur='validate("vcode")' name="vcode">
+                                            <img class="vcode" src="/news/index.php/vcode/vcode" onclick="switchAnother(this)" width="85" height="35" alt="">
                                         </div>
+                                    </td>
+                                    <td>
+                                        <span id="vcode_true" style="color:#4fca64;display:none">验证正确</span>
+                                        <span id="vcode_false" style="color:#ff0000;display:none">验证码不正确</span>
                                     </td>
                                     <td>
                                     </td>
@@ -75,7 +84,7 @@
                                 <th>
                                 </th>
                                 <td width="300px">
-                                    <input class="login" style="width:120px;background-color:#67bbf1;margin-left:40px" type="submit" value="登  录">
+                                    <input class="login" onclick='login()' style="width:120px;background-color:#67bbf1;margin-left:40px" type="submit" value="登  录">
                                 </td>
 
                                 <td>
@@ -90,4 +99,10 @@
             <div class="copyright"></div>
         </div>
     </body>
+
+     <script>
+        function switchAnother(obj) {
+            obj.src = "/news/index.php/vcode/vcode/" + Math.random();
+        }
+    </script>
 </html>

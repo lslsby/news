@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2015-03-21 23:23:29
+<?php /* Smarty version Smarty-3.1.8, created on 2015-03-22 02:23:39
          compiled from "./home/views/default\login\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:7699550d8c72248eb6-87908781%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0983ca697e550e3399728340bee9be7cdfe1837c' => 
     array (
       0 => './home/views/default\\login\\login.tpl',
-      1 => 1426951395,
+      1 => 1426962212,
       2 => 'file',
     ),
   ),
@@ -39,6 +39,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 /js/ajax3.0.js"></script>
         <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['res']->value;?>
 /js/md5.js"></script>
+        <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['res']->value;?>
+/js/login.js"></script>
 
    <style>
         
@@ -71,7 +73,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <tr style="text-align:center">
                                 <th>账户:</th>
                                 <td width="300">
-                                    <input id="email" type="text" style="width:250px" name="email" placeholder="电子邮箱/手机号" autocomplete="off" value="">
+                                    <input id="email" onblur='validate("email")' type="text" style="width:250px" name="email" placeholder="电子邮箱" autocomplete="off" value="">
+                                </td>
+                                <td>
+                                    <span id="email_true" style="color:#4fca64;display:none">该账号可以使用</span>
+                                    <span id="email_false" style="color:#ff0000;display:none">该账号不存在</span>
                                 </td>
                                 <td>
 
@@ -80,7 +86,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                             <tr style="text-align:center">
                                 <th>密码:</th>
                                 <td width="300">
-                                    <input id="password" type="password" style="width:250px" name="password" placeholder="请输入密码" autocomplete="off">
+                                    <input id="password" onblur='validate("password")'type="password" style="width:250px" name="password" placeholder="请输入密码" autocomplete="off">
+                                </td>
+                                <td>
+                                    <span id="password_true" style="color:#4fca64;display:none">密码正确</span>
+                                    <span id="password_false" style="color:#ff0000;display:none">密码错误!</span>
                                 </td>
                                 <td>
                                 </td>
@@ -91,9 +101,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                     </th>
                                     <td width="245">
                                         <div class="valid">
-                                            <input type="text" name="vcode">
-                                            <img class="vcode" src="/news/index.php/vcode/vcode" width="85" height="35" alt="">
+                                            <input id="vcode" type="text" onblur='validate("vcode")' name="vcode">
+                                            <img class="vcode" src="/news/index.php/vcode/vcode" onclick="switchAnother(this)" width="85" height="35" alt="">
                                         </div>
+                                    </td>
+                                    <td>
+                                        <span id="vcode_true" style="color:#4fca64;display:none">验证正确</span>
+                                        <span id="vcode_false" style="color:#ff0000;display:none">验证码不正确</span>
                                     </td>
                                     <td>
                                     </td>
@@ -102,7 +116,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                 <th>
                                 </th>
                                 <td width="300px">
-                                    <input class="login" style="width:120px;background-color:#67bbf1;margin-left:40px" type="submit" value="登  录">
+                                    <input class="login" onclick='login()' style="width:120px;background-color:#67bbf1;margin-left:40px" type="submit" value="登  录">
                                 </td>
 
                                 <td>
@@ -117,5 +131,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="copyright"></div>
         </div>
     </body>
+
+     <script>
+        function switchAnother(obj) {
+            obj.src = "/news/index.php/vcode/vcode/" + Math.random();
+        }
+    </script>
 </html>
 <?php }} ?>
