@@ -1,0 +1,89 @@
+
+#content {
+    background-color:#fff;
+    clear:both;
+    margin: 0px auto;
+    overflow: hidden;
+    width: 1000px;
+    border:1px solid #BCE2F3;
+}
+
+.footer {
+  color: #999999;
+    font-family: "lucida grande","lucida sans unicode",lucida,helvetica,"Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 20px;
+    text-align:center;
+}
+
+/* .comment div { */
+  /* font: 12px/1.6 "Helvetica Neue",Helvetica,Arial; */
+    /* margin: 0; */
+    /* padding: 0; */
+/* } */
+
+.comment h2 {
+    border-bottom: 1px solid #ccc;
+    width: 700px;
+    color: #444;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 5px 0;
+}
+
+.comment_form {
+    padding-left: 70px;
+    width: 650px;
+    font: 12px/1.6 "Helvetica Neue",Helvetica,Arial;
+    margin: 0;
+    padding: 0;
+}
+
+.comment_portrait img {
+    border: 1px solid #eee;
+    height: 40px;
+    padding: 2px;
+    width: 40px;
+}
+
+textarea {
+    font: 12px/1.6 "Helvetica Neue",Helvetica,Arial;
+    margin: 0;
+    padding: 0;
+}
+
+.blg_submit_btn {
+    background: none repeat scroll 0 0 #5cc26f;
+    border: medium none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.comment img {
+    border: 1px solid #eee;
+    height: 40px;
+    padding: 2px;
+    width: 40px;
+}
+
+.comment.portrait {
+    padding-top: 3px;
+    width: 65px;
+}
+
+.comment .body .ctitle {
+    color: #666;
+    font-size: 9pt;
+}
+
+.comment .post {
+    color: #00a;
+    font-size: 14px;
+    margin: 8px 0 0;
+}
