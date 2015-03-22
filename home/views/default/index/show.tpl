@@ -4,7 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="<{$res}>/css/sdju.css" />
     <link rel="stylesheet" type="text/css" href="<{$res}>/css/show.css"/>
+    <script type="text/javascript" src="<{$public}>/js/ajax3.0.js"></script>
     <script type="text/javascript" src="<{$res}>/js/index.js"></script>
+    <script type="text/javascript" src="<{$res}>/js/comment.js"></script>
     <title><{$detail.title}></title>
 </head>
 <body>
@@ -51,7 +53,11 @@
                                                   <font color="#000000">
                                                         &nbsp;&nbsp;评论【
                                                     <span class="">
-                                                          445
+                                                    <{if $haveComments eq "true"}>
+                                                        <{$allcomment}>
+                                                    <{else}>
+                                                        0
+                                                    <{/if}>
                                                     </span>
                                                         】
                                                   </font>
@@ -92,45 +98,46 @@
                     <h2>
                         评论
                     </h2>
-                    
-                    <!--
-                    <table class="ostable" style="width:650">
-                        <tbody>
-                            <tr>
-                                <td class="portrait">
-                                  <img align="absmiddle" class="SmallPortrait" alt="玻璃瓶" src="/news/database/img/background/default.jpg">
-                                </td>
-                                <td class="body">
-                                  <div class="ctitle">
-                                    1楼：玻璃瓶发表于 2015-03-10 21:06:03
-                                  </div>
-                                  <div class="post">
-                                      你好，健康资讯搜索信息接口的请求参数可否增加一个分类参数字段？分类参数的值传资讯分类接口返回的ID字段的值。即先按分类ID搜索，再按keyword搜索。
-                                  </div>       
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    &nbsp;
-                                </td>
-                            </tr>
-                        </tbody>
-                     </table>
-                     -->
 
+                    <{if $haveComments eq "true"}>
+                        <{foreach from=$comments item="value" name="outer"}>
+                            <table class="ostable" style="width:650">
+                                <tbody>
+                                    <tr>
+                                        <td class="portrait">
+                                          <img align="absmiddle" class="SmallPortrait" alt="玻璃瓶" src="/news/database/img/background/default.jpg">
+                                        </td>
+                                        <td class="body">
+                                          <div class="ctitle">
+                                            <{$smarty.foreach.outer.iteration}>楼：<{$value.username}> &nbsp;发表于 <{$value.time}>
+                                          </div>
+                                          <div class="post">
+                                            <{$value.content}>
+                                          </div>       
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                </tbody>
+                             </table>
+                         <{/foreach}>
+                    <{/if}>
                     <br>
                     <div class="comment_portrait" style="float:left">
                         <img class="LargePortrait" align="absmiddle" title="yi18" alt="yi18" src="/news/database/img/background/avatar.jpg">
                     </div>
 
                     <div class="comment_form" style="float:left">
-                        <textarea id="wmd-input" placeholder="" style="width:650px;height:80px;" name="memo">
+                        <textarea id="wmd-input" placeholder="" style="width:650px;height:80px;font-size:20px" name="memo">
                         </textarea>
                         <p>
-                            <button class="blg_submit_btn" style="float:right;" type="submit">
+                            <button onclick='comment()' class="blg_submit_btn" style="float:right;" type="submit">
                                 发表评论
                             </button>
-                            <span id="cmt_tip" class="NoData">
+                            <span id="cur_id" class="<{$detail.id}>">
                             </span>
                         </p>
                     </div>
@@ -243,7 +250,7 @@
                     注册
                 </a>
             <{else if}>
-                <span style="color:#fff000"><{$user.username}>,您好!</span>
+                <span style="color:#fff000" id="user_id" class="<{$user.userid}>"><{$user.username}>,您好!</span>
                 <br>
                 <a style="color:#555555;text-decoration:none" href="/news/index.php/login/leave/id/<{$detail.id}>" target="_self">
                     &nbsp;&nbsp;退出

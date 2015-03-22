@@ -101,8 +101,26 @@
                 $this->assign("login", "false");
             }
 
-            //分配一个编辑器
-            // $this->assign("ck", Form::editor("content"));
+            //看看这则新闻是否有评论信息
+            $comment = D("comment");
+            $comment = $comment->where(array("newid" => $detail["id"]))->order("commentid asc")->select();
+            $user = D("user");
+            
+            if (count($comment) > 0) {
+                for ($i = 0; $i < count($comment); $i++) {
+                    $userid = $comment[$i]["userid"];
+                    $name = $user->where(array("userid" => $userid))->select();
+                    $name = $name[0]["username"];
+                    $comment[$i]["username"] = $name;
+                    $comment[$i]["time"] = date("F j, Y, g:i a", $comment[$i]["time"]);
+                }
+                $this->assign("allcomment", count($comment));
+                $this->assign("comments", $comment);
+                $this->assign("haveComments", "true");
+            } else {
+                $this->assign("haveComments", "false");
+            }
+
             $this->display();
         }
 

@@ -40,4 +40,14 @@ create table if not exists news_user (
        register_time int default 0
 )character set utf8;
 
+create table if not exists news_comment (
+       commentid int primary key auto_increment,
+       newid int ,
+       userid int ,
+       time int,
+       content varchar(1024),
+       foreign key(newid) references news_journalism (id),
+       foreign key(userid) references news_user (userid)
+)character set utf8;
+
 

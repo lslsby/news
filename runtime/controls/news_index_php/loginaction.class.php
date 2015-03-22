@@ -118,5 +118,14 @@ class LoginAction extends Common {
             $this->success("退出成功！", 3, "index/index");
         }
     }
+
+    function isLogin() {
+        $GLOBALS["debug"] = 0;
+        if (isset($_SESSION[session_id()]["login"])) {
+            echo "yes";
+        } else {
+            echo "no";
+        }
+    }
 }
 ?>

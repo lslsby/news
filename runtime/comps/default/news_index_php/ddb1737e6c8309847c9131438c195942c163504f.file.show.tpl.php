@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2015-03-22 03:55:15
+<?php /* Smarty version Smarty-3.1.8, created on 2015-03-22 05:33:59
          compiled from "./home/views/default\index\show.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:81550c6e4ed57c60-96778106%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ddb1737e6c8309847c9131438c195942c163504f' => 
     array (
       0 => './home/views/default\\index\\show.tpl',
-      1 => 1426967711,
+      1 => 1426973635,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'res' => 0,
+    'public' => 0,
     'detail' => 0,
+    'haveComments' => 0,
+    'allcomment' => 0,
+    'comments' => 0,
+    'value' => 0,
     'login' => 0,
     'user' => 0,
     'advertise' => 0,
@@ -35,8 +40,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 /css/sdju.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['res']->value;?>
 /css/show.css"/>
+    <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['public']->value;?>
+/js/ajax3.0.js"></script>
     <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['res']->value;?>
 /js/index.js"></script>
+    <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['res']->value;?>
+/js/comment.js"></script>
     <title><?php echo $_smarty_tpl->tpl_vars['detail']->value['title'];?>
 </title>
 </head>
@@ -87,7 +96,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                                   <font color="#000000">
                                                         &nbsp;&nbsp;评论【
                                                     <span class="">
-                                                          445
+                                                    <?php if ($_smarty_tpl->tpl_vars['haveComments']->value=="true"){?>
+                                                        <?php echo $_smarty_tpl->tpl_vars['allcomment']->value;?>
+
+                                                    <?php }else{ ?>
+                                                        0
+                                                    <?php }?>
                                                     </span>
                                                         】
                                                   </font>
@@ -130,45 +144,57 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <h2>
                         评论
                     </h2>
-                    
-                    <!--
-                    <table class="ostable" style="width:650">
-                        <tbody>
-                            <tr>
-                                <td class="portrait">
-                                  <img align="absmiddle" class="SmallPortrait" alt="玻璃瓶" src="/news/database/img/background/default.jpg">
-                                </td>
-                                <td class="body">
-                                  <div class="ctitle">
-                                    1楼：玻璃瓶发表于 2015-03-10 21:06:03
-                                  </div>
-                                  <div class="post">
-                                      你好，健康资讯搜索信息接口的请求参数可否增加一个分类参数字段？分类参数的值传资讯分类接口返回的ID字段的值。即先按分类ID搜索，再按keyword搜索。
-                                  </div>       
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    &nbsp;
-                                </td>
-                            </tr>
-                        </tbody>
-                     </table>
-                     -->
 
+                    <?php if ($_smarty_tpl->tpl_vars['haveComments']->value=="true"){?>
+                        <?php  $_smarty_tpl->tpl_vars["value"] = new Smarty_Variable; $_smarty_tpl->tpl_vars["value"]->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['comments']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']["outer"]['iteration']=0;
+foreach ($_from as $_smarty_tpl->tpl_vars["value"]->key => $_smarty_tpl->tpl_vars["value"]->value){
+$_smarty_tpl->tpl_vars["value"]->_loop = true;
+ $_smarty_tpl->tpl_vars['smarty']->value['foreach']["outer"]['iteration']++;
+?>
+                            <table class="ostable" style="width:650">
+                                <tbody>
+                                    <tr>
+                                        <td class="portrait">
+                                          <img align="absmiddle" class="SmallPortrait" alt="玻璃瓶" src="/news/database/img/background/default.jpg">
+                                        </td>
+                                        <td class="body">
+                                          <div class="ctitle">
+                                            <?php echo $_smarty_tpl->getVariable('smarty')->value['foreach']['outer']['iteration'];?>
+楼：<?php echo $_smarty_tpl->tpl_vars['value']->value['username'];?>
+ &nbsp;发表于 <?php echo $_smarty_tpl->tpl_vars['value']->value['time'];?>
+
+                                          </div>
+                                          <div class="post">
+                                            <?php echo $_smarty_tpl->tpl_vars['value']->value['content'];?>
+
+                                          </div>       
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                    </tr>
+                                </tbody>
+                             </table>
+                         <?php } ?>
+                    <?php }?>
                     <br>
                     <div class="comment_portrait" style="float:left">
                         <img class="LargePortrait" align="absmiddle" title="yi18" alt="yi18" src="/news/database/img/background/avatar.jpg">
                     </div>
 
                     <div class="comment_form" style="float:left">
-                        <textarea id="wmd-input" placeholder="" style="width:650px;height:80px;" name="memo">
+                        <textarea id="wmd-input" placeholder="" style="width:650px;height:80px;font-size:20px" name="memo">
                         </textarea>
                         <p>
-                            <button class="blg_submit_btn" style="float:right;" type="submit">
+                            <button onclick='comment()' class="blg_submit_btn" style="float:right;" type="submit">
                                 发表评论
                             </button>
-                            <span id="cmt_tip" class="NoData">
+                            <span id="cur_id" class="<?php echo $_smarty_tpl->tpl_vars['detail']->value['id'];?>
+">
                             </span>
                         </p>
                     </div>
@@ -283,7 +309,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     注册
                 </a>
             <?php }else{ ?>
-                <span style="color:#fff000"><?php echo $_smarty_tpl->tpl_vars['user']->value['username'];?>
+                <span style="color:#fff000" id="user_id" class="<?php echo $_smarty_tpl->tpl_vars['user']->value['userid'];?>
+"><?php echo $_smarty_tpl->tpl_vars['user']->value['username'];?>
 ,您好!</span>
                 <br>
                 <a style="color:#555555;text-decoration:none" href="/news/index.php/login/leave/id/<?php echo $_smarty_tpl->tpl_vars['detail']->value['id'];?>
