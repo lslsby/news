@@ -5,9 +5,13 @@ class Journalism {
         $url = 'http://api.yi18.net/news/list?page=';
         $read = @file_get_contents("page.txt");
         $page = empty($read) ? 1 : $read;
+        // $page = 365;
         $newUrl = $url . $page;
 
+        echo $newUrl . "<br>";
+
         $str = file_get_contents($newUrl);
+        // echo $str . "<br>";
         // file_put_contents('fja.txt', $str);
         $json = json_decode($str, true);
         $success = $json['success'];
@@ -44,7 +48,7 @@ class Journalism {
                 $mess = file_get_contents($url_mess);
                 $json_mess = json_decode($mess, true);
                 $value_mess = $json_mess['yi18'];
-                // echo $value_mess["message"];
+                echo $value_mess["message"];
                 @$message->insert($value_mess);
             }
             $page++;
@@ -83,9 +87,9 @@ class Journalism {
         $id = file_get_contents("id.txt");
         echo $id . "<br>";
         $url_mess = "http://api.yi18.net/news/show?id=" . $id;
-        echo $url_mess . "<br>";
+        // echo $url_mess . "<br>";
         $mess = file_get_contents($url_mess);
-        echo $mess;
+        // echo $mess;
         $json = json_decode($mess, true);
         $success = $json['success'];
         $array = $json['yi18'];
