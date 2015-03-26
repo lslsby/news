@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2015-03-21 21:31:48
+<?php /* Smarty version Smarty-3.1.8, created on 2015-03-24 16:38:42
          compiled from "./home/views/default\public\success.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4168550d72c4c07910-07757980%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4b2138cf5a3543ef65af7c638a7d239a4bb40327' => 
     array (
       0 => './home/views/default\\public\\success.tpl',
-      1 => 1425375308,
+      1 => 1427186293,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_550d72c4e9dfd6_44732211',
   'variables' => 
   array (
     'mess' => 0,
@@ -23,13 +25,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'location' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_550d72c4e9dfd6_44732211',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_550d72c4e9dfd6_44732211')) {function content_550d72c4e9dfd6_44732211($_smarty_tpl) {?><html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>提示消息 - BroPHP</title>
+		<title>提示消息</title>
 
 		<style type="text/css">
 			body { font: 75% Arail; text-align: center; }

@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>提示消息 - BroPHP</title>
+		<title>提示消息</title>
 
 		<style type="text/css">
 			body { font: 75% Arail; text-align: center; }

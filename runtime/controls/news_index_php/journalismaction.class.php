@@ -85,7 +85,7 @@ class JournalismAction extends Common {
 
     function update() {
         $id = file_get_contents("id.txt");
-        // echo $id . "<br>";
+        echo $id . "<br>";
         $url_mess = "http://api.yi18.net/news/show?id=" . $id;
         // echo $url_mess . "<br>";
         $mess = file_get_contents($url_mess);

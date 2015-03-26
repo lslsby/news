@@ -11,10 +11,24 @@ class Advertise {
 
         for ($i = 0; $i < count($filenames); $i++) {
             if (0 == strncmp($filenames[$i], "logo_", 5)) {
+                // $value = array();
                 $value = array("name"=>"上海电机学院");
                 $value["url"] = "http://www.sdju.edu.cn";
                 $value["content"] = "http://www.sdju.edu.cn";
                 $value["img"] = "/news/database/img/logo/" . $filenames[$i];
+
+                $exist = $advertise->where(array("img"=>$value["img"]))->select();
+
+                
+
+                //如果此条广告已经在数据库中存在，则返回
+                if (count($exist) > 0)
+                {
+                    // var_dump($exist[0]);
+                    // return;
+                    continue;
+                }
+
                 $value["qrcode"] = "/news/database/qrcode/" . $filenames[$i];
 
                 $logo = "./database/img/logo/sdju_1_x.jpg"; //准备好的logo图片

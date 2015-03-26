@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2015-03-22 05:33:59
+<?php /* Smarty version Smarty-3.1.8, created on 2015-03-24 16:40:48
          compiled from "./home/views/default\index\show.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:81550c6e4ed57c60-96778106%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ddb1737e6c8309847c9131438c195942c163504f' => 
     array (
       0 => './home/views/default\\index\\show.tpl',
-      1 => 1426973635,
+      1 => 1427186445,
       2 => 'file',
     ),
   ),
@@ -313,7 +313,7 @@ $_smarty_tpl->tpl_vars["value"]->_loop = true;
 "><?php echo $_smarty_tpl->tpl_vars['user']->value['username'];?>
 ,您好!</span>
                 <br>
-                <a style="color:#555555;text-decoration:none" href="/news/index.php/login/leave/id/<?php echo $_smarty_tpl->tpl_vars['detail']->value['id'];?>
+                <a style="color:#555555;text-decoration:none; position:absolute; right:20px" href="/news/index.php/login/leave/id/<?php echo $_smarty_tpl->tpl_vars['detail']->value['id'];?>
 " target="_self">
                     &nbsp;&nbsp;退出
                 </a>
@@ -321,9 +321,9 @@ $_smarty_tpl->tpl_vars["value"]->_loop = true;
         </div>
 
          <div id="advertisement" style="position:fixed; width=200px; height:450px; left:0px; top:100px; background-color:#dbed86">
+                    <span onclick="this.parentNode.style.display='none'" style="cursor:pointer;float:right;width:35px;background:#500;border:1px solid #555;color:white;font-size:14px">关闭X</span>
                 <a href="<?php echo $_smarty_tpl->tpl_vars['advertise']->value['url'];?>
 " target="_blank">
-                    <span onclick="this.parentNode.style.display='none'" style="cursor:pointer;float:right;width:35px;background:#500;border:1px solid #555;color:white;font-size:14px">关闭X</span>
                     <br>
                     <img style="float:none; width:150px; height:250px" src="<?php echo $_smarty_tpl->tpl_vars['advertise']->value['img'];?>
 ">

@@ -252,15 +252,15 @@
             <{else if}>
                 <span style="color:#fff000" id="user_id" class="<{$user.userid}>"><{$user.username}>,您好!</span>
                 <br>
-                <a style="color:#555555;text-decoration:none" href="/news/index.php/login/leave/id/<{$detail.id}>" target="_self">
+                <a style="color:#555555;text-decoration:none; position:absolute; right:20px" href="/news/index.php/login/leave/id/<{$detail.id}>" target="_self">
                     &nbsp;&nbsp;退出
                 </a>
             <{/if}>
         </div>
 
          <div id="advertisement" style="position:fixed; width=200px; height:450px; left:0px; top:100px; background-color:#dbed86">
-                <a href="<{$advertise.url}>" target="_blank">
                     <span onclick="this.parentNode.style.display='none'" style="cursor:pointer;float:right;width:35px;background:#500;border:1px solid #555;color:white;font-size:14px">关闭X</span>
+                <a href="<{$advertise.url}>" target="_blank">
                     <br>
                     <img style="float:none; width:150px; height:250px" src="<{$advertise.img}>">
                     <br>

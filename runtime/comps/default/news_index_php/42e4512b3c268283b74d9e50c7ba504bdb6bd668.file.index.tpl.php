@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2015-03-22 02:59:05
+<?php /* Smarty version Smarty-3.1.8, created on 2015-03-24 16:40:19
          compiled from "./home/views/default\index\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:733455094700b36aa3-17140481%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '42e4512b3c268283b74d9e50c7ba504bdb6bd668' => 
     array (
       0 => './home/views/default\\index\\index.tpl',
-      1 => 1426964338,
+      1 => 1427186416,
       2 => 'file',
     ),
   ),
@@ -238,7 +238,7 @@ $_smarty_tpl->tpl_vars["value"]->_loop = true;
 ,您好!</span>
                     <br>
                     <br>
-                    <a href="/news/index.php/login/leave/page/main" target="_self">
+                    <a href="/news/index.php/login/leave/page/main" style="position:absolute; right:20px" target="_self">
                         &nbsp;&nbsp;退出
                     </a>
                 <?php }?>
@@ -247,9 +247,9 @@ $_smarty_tpl->tpl_vars["value"]->_loop = true;
         </div>
 
         <div id="advertisement" style="position:fixed; width=200px; height:450px; left:0px; top:100px; background-color:#dbed86">
+                <span onclick="this.parentNode.style.display='none'" style="cursor:pointer;float:right;width:35px;background:#500;border:1px solid #555;color:white">关闭X</span>
             <a href="<?php echo $_smarty_tpl->tpl_vars['advertise']->value['url'];?>
 " target="_blank">
-                <span onclick="this.parentNode.style.display='none'" style="cursor:pointer;float:right;width:35px;background:#500;border:1px solid #555;color:white">关闭X</span>
                 <br>
                 <img style="float:none; width:150px; height:250px" src="<?php echo $_smarty_tpl->tpl_vars['advertise']->value['img'];?>
 ">
